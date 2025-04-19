@@ -8,22 +8,28 @@
 import UIKit
 
 class DetailVC: UIViewController {
-
+    @IBOutlet weak var nameTF: UITextField!
+    
+    
+    var todo: Todo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let todo = todo {
+            nameTF.text = todo.name
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func updateButton(_ sender: Any) {
+        if let name = nameTF.text, let tempTodo = todo {
+            update(id: tempTodo.id!, name: tempTodo.name!)
+        }
     }
-    */
-
+    
+    
+    func update(id: Int, name: String){
+        print("todo güncelle: \(name)")
+    }
 }
