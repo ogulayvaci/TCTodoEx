@@ -6,8 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6D113BE42DB675AA00B2338E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6D113BE32DB675AA00B2338E /* RxSwift */; };
+		6DFF0E4C2DBABA5A00CBD74A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFF0E0F2DBAB2C600CBD74A /* libsqlite3.tbd */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6DE4AF772DB2DFBD00313876 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DFF0E0F2DBAB2C600CBD74A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DFF0E4C2DBABA5A00CBD74A /* libsqlite3.tbd in Frameworks */,
+				6D113BE42DB675AA00B2338E /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				6DE4AF792DB2DFBD00313876 /* ToDo */,
+				6DFF0E0E2DBAB2C600CBD74A /* Frameworks */,
 				6DE4AF782DB2DFBD00313876 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +65,14 @@
 				6DE4AF772DB2DFBD00313876 /* ToDo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6DFF0E0E2DBAB2C600CBD74A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DFF0E0F2DBAB2C600CBD74A /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +95,7 @@
 			);
 			name = ToDo;
 			packageProductDependencies = (
+				6D113BE32DB675AA00B2338E /* RxSwift */,
 			);
 			productName = ToDo;
 			productReference = 6DE4AF772DB2DFBD00313876 /* ToDo.app */;
@@ -95,6 +113,7 @@
 				TargetAttributes = {
 					6DE4AF762DB2DFBD00313876 = {
 						CreatedOnToolsVersion = 16.3;
+						LastSwiftMigration = 1630;
 					};
 				};
 			};
@@ -107,6 +126,9 @@
 			);
 			mainGroup = 6DE4AF6E2DB2DFBD00313876;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6D113BE22DB675AA00B2338E /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6DE4AF782DB2DFBD00313876 /* Products */;
 			projectDirPath = "";
@@ -143,6 +165,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BT4MVS4AN9;
@@ -161,6 +184,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayvaci.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ToDo/ToDo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -171,6 +196,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BT4MVS4AN9;
@@ -189,6 +215,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayvaci.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ToDo/ToDo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -337,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6D113BE22DB675AA00B2338E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6D113BE32DB675AA00B2338E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D113BE22DB675AA00B2338E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6DE4AF6F2DB2DFBD00313876 /* Project object */;
 }

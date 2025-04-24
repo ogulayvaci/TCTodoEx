@@ -10,6 +10,8 @@ import UIKit
 class CreateVC: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     
+    var createVM = CreateVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,12 +19,7 @@ class CreateVC: UIViewController {
     
     @IBAction func createButton(_ sender: Any) {
         if let name = nameTF.text {
-            kaydet(name: name)
+            createVM.kaydet(name: name)
         }
-    }
-    
-    
-    func kaydet(name: String){
-        print("Todo Kaydet: \(name)")
     }
 }

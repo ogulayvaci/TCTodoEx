@@ -10,7 +10,7 @@ import UIKit
 class DetailVC: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     
-    
+    var detailVM = DetailVM()
     var todo: Todo?
     
     override func viewDidLoad() {
@@ -24,12 +24,7 @@ class DetailVC: UIViewController {
     
     @IBAction func updateButton(_ sender: Any) {
         if let name = nameTF.text, let tempTodo = todo {
-            update(id: tempTodo.id!, name: tempTodo.name!)
+            detailVM.update(id: tempTodo.id!, name: name)
         }
-    }
-    
-    
-    func update(id: Int, name: String){
-        print("todo güncelle: \(name)")
     }
 }

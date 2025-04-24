@@ -12,6 +12,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var todoTableView: UITableView!
     
     var todosList = [Todo]()
+    var mainVM = MainVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +22,16 @@ class MainVC: UIViewController {
         todoTableView.dataSource = self
         todoTableView.delegate = self
         
-        let t1 = Todo(id: 1, name: "Su")
-        let t2 = Todo(id: 2, name: "Ekmek")
-        let t3 = Todo(id: 3, name: "Diş Fırçası")
-        let t4 = Todo(id: 4, name: "Çöp")
-        let t5 = Todo(id: 5, name: "Macun")
+        _ = mainVM.todosList.subscribe(onNext: { list in // listening - dinleme
+            self.todosList = list
+            self.todoTableView.reloadData()
+        })
         
-        todosList.append(t1)
-        todosList.append(t2)
-        todosList.append(t3)
-        todosList.append(t4)
-        todosList.append(t5)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        mainVM.loadTodos()
     }
     
     
@@ -45,6 +45,7 @@ class MainVC: UIViewController {
         }
     }
 }
+
 
 //MARK: - TableView Delegate & DataSource
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -70,10 +71,31 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { contextualAction, view, bool in // closure
+            let todo = self.todosList[indexPath.row]
+            
+            let alert = UIAlertController(title: "Delete '\(todo.name!)'", message: "Do you want to delete \(todo.name!) permanently?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            let okAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                self.mainVM.delete(id: todo.id!)
+            }
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
+
+//MARK: - SearchBar Delegate
 extension MainVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("todo ara: \(searchText)")
+        mainVM.search(searchText: searchText)
     }
 }
